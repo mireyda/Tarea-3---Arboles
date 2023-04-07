@@ -1,0 +1,72 @@
+
+package com.mycompany.estructurasdedatos_2;
+
+/**
+ *
+ * @author mirey
+ */
+public class arbolbinario {
+    private nodoarbol raiz;
+    
+    public arbolbinario (){
+        raiz=null;
+    }
+    
+    public boolean estavacio(){
+      return raiz == null;  
+    }
+    
+    public nodoarbol getraiz(){
+        return raiz;
+    }
+    
+    public void insertarnodo(int dato, nodoarbol nodo){
+        if(estavacio ()){
+        nodoarbol nuevo = new nodoarbol (dato);
+        raiz= nuevo;
+    }else{
+     if(dato<nodo.getDato()) {
+         if(nodo.getHijoizquierdo()==null) {
+            nodoarbol nuevo = new nodoarbol(dato); 
+            nodo.setHijoizquierdo(nuevo);
+         }else{
+             insertarnodo(dato,nodo.getHijoizquierdo());
+         }
+         
+       }else{
+         if(dato>nodo.getDato()){
+              if(nodo.getHijoderecho()==null) {
+               nodoarbol nuevo = new nodoarbol(dato); 
+                nodo.setHijoderecho(nuevo);
+         }else{
+             insertarnodo(dato,nodo.getHijoderecho());
+            }
+            }else{
+             System.out.println("dato repetido"+dato);
+         }
+        }
+    }    
+        
+  }
+    //metodo para buscar el numero menor
+    public int buscarmenor(){
+        int menor = raiz.getDato();
+        nodoarbol nodo=raiz;
+        while(nodo.getHijoizquierdo()!=null){
+            nodo = nodo.getHijoizquierdo();
+            menor = nodo.getDato();
+        }return menor;
+    }  
+    //metodo para buscar el numero mayor
+        public int buscarmayor(){
+        int mayor = raiz.getDato();
+        nodoarbol nodo=raiz;
+        while(nodo.getHijoderecho()!=null){
+            nodo = nodo.getHijoderecho();
+            mayor = nodo.getDato();
+        }return mayor;
+    }  
+    //***** contar nodos
+        
+
+}
